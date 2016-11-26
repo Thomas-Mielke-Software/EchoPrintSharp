@@ -196,16 +196,16 @@ namespace EchoPrintSharp
 		private Int16[] Resample(Int16[] source_samples, int source_bps, int source_numberofchannels, int source_samplingrate)
 		{
 			if (source_samples == null) return null;
-			int source_numsamples = source_samples.Length;
-			var target_samples = new Int16[source_numberofchannels * source_samplingrate / (int)Params.SamplingRate];
-			int target_numsamples = target_samples.Length;
+			int source_buffersize = source_samples.Length;
+			var target_samples = new Int16[(Int64)source_buffersize * (Int64)Params.SamplingRate / (source_numberofchannels * source_samplingrate)];
+			int target_buffersize = target_samples.Length;
 			if (source_bps != 16) return null; // TODO: support sample width other than 16 bits
 
 			int source_index, target_index;
 
 			for (target_index = source_index = 0; 
-				target_index < target_numsamples && source_index < source_numsamples * source_numberofchannels;
-				target_index++, source_index = target_index * source_numberofchannels * source_samplingrate / (int)Params.SamplingRate)
+				target_index < target_buffersize && source_index < source_buffersize;
+				target_index++, source_index = (int)((Int64)target_index * source_numberofchannels * source_samplingrate / (Int64)Params.SamplingRate))
 			{
 				// mix stereo or multichannel source samples to mono
 				int mixed_source_sample = 0;

@@ -311,7 +311,7 @@ namespace EchoPrintSharp
 
 							// Set the code alongside the time of onset
 							_Codes[actual_codes++] = new FPCode(time_for_onset_ms_quantized, hashed_code);
-							Debug.WriteLine("whee {0},{1}: [{2}, {3}] ({4}, {5}), {6} = {7} at {8}\n", actual_codes, k, time_delta0, time_delta1, p[0, k], p[1, k], band, hashed_code, time_for_onset_ms_quantized);
+							//Debug.WriteLine("whee {0},{1}: [{2}, {3}] ({4}, {5}), {6} = {7} at {8}\n", actual_codes, k, time_delta0, time_delta1, p[0, k], p[1, k], band, hashed_code, time_for_onset_ms_quantized);
 						}
 					}
 				}

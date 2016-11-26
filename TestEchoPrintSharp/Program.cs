@@ -62,7 +62,7 @@ namespace TestEchoPrintSharp
 			{
 				foreach (string mp3File in args)
 				{
-					try
+//					try
 					{
 						using (Mp3FileReader mp3 = new Mp3FileReader(mp3File))
 						{
@@ -70,33 +70,13 @@ namespace TestEchoPrintSharp
 							{
 								using (BinaryReader reader = new BinaryReader(pcm, System.Text.Encoding.ASCII))
 								{
-									string chunkId = new string(reader.ReadChars(4));
-									UInt32 chunkSize = reader.ReadUInt32();
-									string riffType = new string(reader.ReadChars(4));
-									string fmtId = new string(reader.ReadChars(4));
-									UInt32 fmtSize = reader.ReadUInt32();
-									UInt16 formatTag = reader.ReadUInt16();
-									UInt16 channels = reader.ReadUInt16();
-									UInt32 samplesPerSec = reader.ReadUInt32();
-									UInt32 avgBytesPerSec = reader.ReadUInt32();
-									UInt16 blockAlign = reader.ReadUInt16();
-									UInt16 bitsPerSample = reader.ReadUInt16();
-									string dataID = new string(reader.ReadChars(4));
-									UInt32 dataSize = reader.ReadUInt32();
+                                    int avgBytesPerSec = pcm.WaveFormat.AverageBytesPerSecond;
+                                    int bitsPerSample = pcm.WaveFormat.BitsPerSample;
+                                    int blockAlign = pcm.WaveFormat.BlockAlign;
+                                    int channels = pcm.WaveFormat.Channels;
+                                    int samplesPerSec = pcm.WaveFormat.SampleRate;
 
-									if (chunkId != "RIFF" || riffType != "WAVE" || fmtId != "fmt " || dataID != "data" || fmtSize != 16)
-									{
-										Console.WriteLine("Malformed WAV header decoded from in '{0}'", mp3File);
-										return;
-									}
-
-									if (formatTag != 1 || chunkSize < 48)
-									{
-										Console.WriteLine("Unexpected WAV format decoded from '{0}', need 11025 Hz mono 16 bit (little endian integers)", mp3File);
-										return;
-									}
-
-									uint numberOfsamples = Math.Min(dataSize / 2, 330750); // max 30 seconds
+									int numberOfsamples = Math.Min((int)pcm.Length, 30 * samplesPerSec * channels); // max 30 seconds
 									var pcmData = new Int16[numberOfsamples];
 									for (int i = 0; i < numberOfsamples; i++)
 									{
@@ -111,11 +91,15 @@ namespace TestEchoPrintSharp
 							}
 						}
 					}
-					catch (DllNotFoundException e)
+//					catch (DllNotFoundException e)
 					{
-						Console.WriteLine("Sorry, a necessary dll is not found on your system. Here come the details:\r\n\r\n{0}", e);
+//						Console.WriteLine("Sorry, a necessary dll is not found on your system. Here come the details:\r\n\r\n{0}", e);
 					}
-				}
+//                    catch (Exception e)
+                    {
+//                        Console.WriteLine("Sorry, something went wrong. Here come the details:\r\n\r\n{0}", e);
+                    }
+                }
 			}
 		}
 	}
