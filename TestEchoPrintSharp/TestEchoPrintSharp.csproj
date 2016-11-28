@@ -18,7 +18,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Externalconsole>true</Externalconsole>
-    <Commandlineparameters>"/home/thomas/Musik/alien sex fiend - coma.mp3"</Commandlineparameters>
+    <Commandlineparameters>"/home/thomas/Musik/NIN-999999-11025.wav"</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
