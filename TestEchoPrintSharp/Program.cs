@@ -10,8 +10,6 @@ namespace TestEchoPrintSharp
 	{
 		public static void Main (string[] args)
 		{
-			var echoPrint = new CodeGen();
-
 			if (args.Length == 0)
 			{
 				var assembly = Assembly.GetExecutingAssembly();
@@ -53,53 +51,81 @@ namespace TestEchoPrintSharp
 						pcmData[i] = reader.ReadInt16();
 					}
 
+					var echoPrint = new CodeGen();
 					Console.WriteLine(echoPrint.Generate(pcmData));
 					Console.WriteLine("");
-					Console.WriteLine("The above is the EchoPrint code for the song '999,999' by Nine Inch Nails. To generate codes for your own mp3s add them as parameters to TestEchoPrintSharp.exe in a command line or in the debug settings (only Windows, because NAudio uses Msacm32.dll).");
+					Console.WriteLine("The above is the EchoPrint code for the song '999,999' by Nine Inch Nails.");
+					Console.WriteLine("To generate codes for your own mp3s or wavs add them as parameters to ");
+					Console.WriteLine("TestEchoPrintSharp.exe in a command line or in the debug settings");
+					Console.WriteLine("or execution setting of the TestEchoPrintSharp project.");
+					Console.WriteLine("(mp3s only work on Windows, because NAudio depends on Msacm32.dll.)");
 				}
 			} 
 			else
 			{
-				foreach (string mp3File in args)
+				foreach (string audioFile in args)
 				{
-//					try
+					if (audioFile.Length >= 4 && audioFile.Substring(audioFile.Length - 4).Equals(".wav", StringComparison.InvariantCultureIgnoreCase))
 					{
-						using (Mp3FileReader mp3 = new Mp3FileReader(mp3File))
+						using (WaveFileReader wav = new WaveFileReader(audioFile))
 						{
-							using (WaveStream pcm = WaveFormatConversionStream.CreatePcmStream(mp3))
+							using (WaveStream pcm = WaveFormatConversionStream.CreatePcmStream(wav))
 							{
 								using (BinaryReader reader = new BinaryReader(pcm, System.Text.Encoding.ASCII))
 								{
-                                    int avgBytesPerSec = pcm.WaveFormat.AverageBytesPerSecond;
-                                    int bitsPerSample = pcm.WaveFormat.BitsPerSample;
-                                    int blockAlign = pcm.WaveFormat.BlockAlign;
-                                    int channels = pcm.WaveFormat.Channels;
-                                    int samplesPerSec = pcm.WaveFormat.SampleRate;
-
-									int numberOfsamples = Math.Min((int)pcm.Length, 30 * samplesPerSec * channels); // max 30 seconds
-									var pcmData = new Int16[numberOfsamples];
-									for (int i = 0; i < numberOfsamples; i++)
-									{
-										pcmData[i] = reader.ReadInt16();
-									}
-
-									Console.WriteLine("Code for {0}:", mp3File);
-									Console.WriteLine("");
-									Console.WriteLine(echoPrint.Generate(pcmData, bitsPerSample, channels, (int)samplesPerSec));
-									Console.WriteLine("");
+									HandleFile(pcm, audioFile);
 								}
 							}
 						}
 					}
-//					catch (DllNotFoundException e)
+					else if (audioFile.Length >= 4 && audioFile.Substring(audioFile.Length - 4).Equals(".mp3", StringComparison.InvariantCultureIgnoreCase))
+					try
 					{
-//						Console.WriteLine("Sorry, a necessary dll is not found on your system. Here come the details:\r\n\r\n{0}", e);
+						using (Mp3FileReader mp3 = new Mp3FileReader(audioFile))
+						{
+							using (WaveStream pcm = WaveFormatConversionStream.CreatePcmStream(mp3))
+							{
+								HandleFile(pcm, audioFile);
+							}
+						}
 					}
-//                    catch (Exception e)
+					catch (DllNotFoundException e)
+					{
+						Console.WriteLine("Sorry, a necessary dll is not found on your system. Here come the details:\r\n\r\n{0}", e);
+					}
+                    catch (Exception e)
                     {
-//                        Console.WriteLine("Sorry, something went wrong. Here come the details:\r\n\r\n{0}", e);
+                        Console.WriteLine("Sorry, something went wrong. Here come the details:\r\n\r\n{0}", e);
                     }
                 }
+			}
+		}
+			
+		private static void HandleFile(object audioStream, string fileName)
+		{
+			var pcm = audioStream as WaveStream;
+
+			using (BinaryReader reader = new BinaryReader(pcm, System.Text.Encoding.ASCII))
+			{
+				int avgBytesPerSec = pcm.WaveFormat.AverageBytesPerSecond;
+				int bitsPerSample = pcm.WaveFormat.BitsPerSample;
+				int blockAlign = pcm.WaveFormat.BlockAlign;
+				int channels = pcm.WaveFormat.Channels;
+				int samplesPerSec = pcm.WaveFormat.SampleRate;
+
+				int numberOfsamples = Math.Min((int)pcm.Length, 30 * samplesPerSec * channels); // max 30 seconds
+				var pcmData = new Int16[numberOfsamples];
+				for (int i = 0; i < numberOfsamples; i++)
+				{
+					pcmData[i] = reader.ReadInt16();
+				}
+
+				Console.WriteLine("Code for {0}:", fileName);
+				Console.WriteLine("");
+
+				var echoPrint = new CodeGen();
+				Console.WriteLine(echoPrint.Generate(pcmData, bitsPerSample, channels, (int)samplesPerSec));
+				Console.WriteLine("");
 			}
 		}
 	}
