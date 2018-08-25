@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoPrintSharp", "EchoPrintSharp\EchoPrintSharp.csproj", "{F1A68ECD-C736-47FE-BDCF-03466E3845DF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEchoPrintSharp", "TestEchoPrintSharp\TestEchoPrintSharp.csproj", "{BBE7F12A-A0F3-4C6D-932A-F6D3E9575065}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoPrintSharp", "EchoPrintSharp\EchoPrintSharp.csproj", "{3C4AE863-6156-4556-A270-EBA3A0FAC24D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,39 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BBE7F12A-A0F3-4C6D-932A-F6D3E9575065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBE7F12A-A0F3-4C6D-932A-F6D3E9575065}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBE7F12A-A0F3-4C6D-932A-F6D3E9575065}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBE7F12A-A0F3-4C6D-932A-F6D3E9575065}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1A68ECD-C736-47FE-BDCF-03466E3845DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1A68ECD-C736-47FE-BDCF-03466E3845DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1A68ECD-C736-47FE-BDCF-03466E3845DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1A68ECD-C736-47FE-BDCF-03466E3845DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C4AE863-6156-4556-A270-EBA3A0FAC24D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C4AE863-6156-4556-A270-EBA3A0FAC24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C4AE863-6156-4556-A270-EBA3A0FAC24D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C4AE863-6156-4556-A270-EBA3A0FAC24D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		Policies = $0
-		$0.TextStylePolicy = $1
-		$1.inheritsSet = null
-		$1.scope = text/x-csharp
-		$0.CSharpFormattingPolicy = $2
-		$2.AnonymousMethodBraceStyle = NextLine
-		$2.PropertyBraceStyle = NextLine
-		$2.PropertyGetBraceStyle = NextLine
-		$2.PropertySetBraceStyle = NextLine
-		$2.EventBraceStyle = NextLine
-		$2.EventAddBraceStyle = NextLine
-		$2.EventRemoveBraceStyle = NextLine
-		$2.StatementBraceStyle = NextLine
-		$2.BeforeMethodDeclarationParentheses = False
-		$2.BeforeMethodCallParentheses = False
-		$2.BeforeConstructorDeclarationParentheses = False
-		$2.BeforeIndexerDeclarationBracket = False
-		$2.BeforeDelegateDeclarationParentheses = False
-		$2.AfterDelegateDeclarationParameterComma = True
-		$2.NewParentheses = False
-		$2.SpacesBeforeBrackets = False
-		$2.inheritsSet = Mono
-		$2.inheritsScope = text/x-csharp
-		$2.scope = text/x-csharp
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CEEE61BA-B391-4EAD-AF47-5F055DE74A7D}
 	EndGlobalSection
 EndGlobal

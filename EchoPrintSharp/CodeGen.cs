@@ -175,17 +175,17 @@ namespace EchoPrintSharp
 			byte[] bytes = enc.GetBytes(s);
 
 			MemoryStream output = new MemoryStream();
-			/*using (DeflateStream dstream = new DeflateStream(output, CompressionLevel.Optimal))
+            /*using (DeflateStream dstream = new DeflateStream(output, CompressionLevel.Optimal))
 			{
 				dstream.Write(bytes, 0, bytes.Length);
 			} obviously not the same Deflate as in zlib!*/
 
-			// ZLib Deflate
-			using (ZLib.ZOutputStream dstream = new ZLib.ZOutputStream(output, ZLib.zlibConst.Z_DEFAULT_COMPRESSION))
-			{
-				dstream.Write(bytes, 0, bytes.Length);
-				dstream.Close();
-			}
+            // ZLib Deflate
+            using (Ionic.Zlib.ZlibStream dstream = new Ionic.Zlib.ZlibStream(output, Ionic.Zlib.CompressionMode.Compress))
+            {
+                dstream.Write(bytes, 0, bytes.Length);
+                dstream.Close();
+            }
 
 			string base64string = Convert.ToBase64String(output.ToArray()).Replace('+', '-').Replace('/', '_');
 			return base64string;

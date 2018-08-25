@@ -58,7 +58,7 @@ namespace TestEchoPrintSharp
 					Console.WriteLine("To generate codes for your own mp3s or wavs add them as parameters to ");
 					Console.WriteLine("TestEchoPrintSharp.exe in a command line or in the debug settings");
 					Console.WriteLine("or execution setting of the TestEchoPrintSharp project.");
-					Console.WriteLine("(mp3s only work on Windows, because NAudio uses Msacm32.dll.)");
+					Console.WriteLine("(mp3s only work on Windows, because NAudio depends on Msacm32.dll.)");
 				}
 			} 
 			else
