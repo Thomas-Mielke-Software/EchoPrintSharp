@@ -4,7 +4,7 @@ Library that generates an EchoPrint audio fingerprint string from PCM audio data
 
 ## How To Use
 
-Add the Nuget package to your project 
+Add the Nuget package to your project
 
     Install-Package EchoPrintSharp.Netstandard -Version 1.1.1
 
@@ -34,13 +34,13 @@ Install monodevelop and all necessary mono stuff.
 
 DEPRECATED: If you still want to build a PCL, checkout a0086813964858147184c8b35ea36174fc679ded. In order to be able to build PCLs on Linux, follow the instructions in this stack overflow answer: http://stackoverflow.com/questions/35245840/build-monodevelop-on-debian-jessie-using-mono-4-3-3
 
-Make sure TestEchoPrint is selected as startup project and press the play button do build.
+Open TestEchoPrint.sln, make sure TestEchoPrint is selected as startup project, and press the play button do build.
 
 ### Windows
 
-Grab the latest Visual Studio Community Edition. 
+Grab the latest Visual Studio Community Edition.
 
-Make sure TestEchoPrint is selected as startup project and press F5.
+Open TestEchoPrint.sln, make sure TestEchoPrint is selected as startup project, and press F5.
  
 ## Credits / Licenses
 
@@ -50,4 +50,4 @@ Murmurhash: (c) Austin Appleby (Public Domain / MIT), C# port by Davy Landman
 
 The folks from EchoNest who developed the algorithm and coded the C++ reference implementation: Tristan Jehan, Brian Whitman, and Jim Lucchese
 
-Wav sample Nine Inch Nails "999,999" from album "The Slip": (CC BY-NC-SA) Trent Reznor and Atticus Ross 
+Wav sample Nine Inch Nails "999,999" from album "The Slip": (CC BY-NC-SA) Trent Reznor and Atticus Ross
