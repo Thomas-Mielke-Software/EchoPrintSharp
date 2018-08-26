@@ -21,7 +21,7 @@ then add some code:
     var echoPrint = new CodeGen();
     string epCodes = echoPrint.Generate(pcmData);
 
-If your audio data is not in mono/11,025Hz/16bin format, use this call:
+If your audio data is not in mono/11,025Hz/16bit format, use this call:
 
     ...
     string epCodes = Generate(pcmData, bitsPerSample, numberOfChannels, samplingrate)
