@@ -48,4 +48,6 @@ EchoPrintSharp: Copyright (c) 2018 Thomas Mielke, released under the MIT License
 
 Murmurhash: (c) Austin Appleby (Public Domain / MIT), C# port by Davy Landman
 
+The folks from EchoNest who developed the algorithm and coded the C++ reference implementation: Tristan Jehan, Brian Whitman, and Jim Lucchese
+
 Wav sample Nine Inch Nails "999,999" from album "The Slip": (CC BY-NC-SA) Trent Reznor and Atticus Ross 
