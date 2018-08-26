@@ -6,14 +6,18 @@ Library that generates an EchoPrint audio fingerprint string from PCM audio data
 
 Add the Nuget package to your project 
 
-    Install-Packet EchoPrintSharp
+    Install-Package EchoPrintSharp.Netstandard -Version 1.1.1
+
+or the old PCL:
+
+    Install-Package EchoPrintSharp
  
-or add the .NET Standard to your References manually and add some code:
+then add some code:
 
     using EchoPrintSharp;
     ...
     var pcmData = new Int16[441000]; // 40 seconds x 11,025Hz = 441,000 samples, for example
-    ... // put your mono/11,025Hz audio data in pcmData here    
+    ... // put your mono/11,025Hz audio data in pcmData here
     var echoPrint = new CodeGen();
     string epCodes = echoPrint.Generate(pcmData);
 
@@ -28,20 +32,19 @@ If your audio data is not in mono/11,025Hz/16bin format, use this call:
 
 Install monodevelop and all necessary mono stuff.
 
-DEPRECATED: In order to be able to build PCLs on Linux, follow the instructions in this stack overflow answer: http://stackoverflow.com/questions/35245840/build-monodevelop-on-debian-jessie-using-mono-4-3-3
-(Haven't tried to build the .NET Standard library from Linux yet...)
+DEPRECATED: If you still want to build a PCL, checkout a0086813964858147184c8b35ea36174fc679ded. In order to be able to build PCLs on Linux, follow the instructions in this stack overflow answer: http://stackoverflow.com/questions/35245840/build-monodevelop-on-debian-jessie-using-mono-4-3-3
+
+Make sure TestEchoPrint is selected as startup project and press the play button do build.
 
 ### Windows
 
-Grab the latest Visual Studio Community Edition.
+Grab the latest Visual Studio Community Edition. 
 
-### Both IDEs
-
-Select TestEchoPrint as startup project and press F5.
+Make sure TestEchoPrint is selected as startup project and press F5.
  
 ## Credits / Licenses
 
-EchoPrintSharp: Copyright (c) 2016 Thomas Mielke, released under the MIT License (MIT)
+EchoPrintSharp: Copyright (c) 2018 Thomas Mielke, released under the MIT License (MIT)
 
 Murmurhash: (c) Austin Appleby (Public Domain / MIT), C# port by Davy Landman
 
