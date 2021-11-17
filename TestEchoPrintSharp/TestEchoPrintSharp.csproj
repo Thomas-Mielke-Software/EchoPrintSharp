@@ -1,27 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-  </PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702</NoWarn>
-    <WarningsAsErrors>NU1605</WarningsAsErrors>
-    <WarningLevel>4</WarningLevel>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\NIN-999999-11025.opus" />
     <None Remove="Resources\NIN-999999-11025.wav" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\NIN-999999-11025.opus" />
     <EmbeddedResource Include="Resources\NIN-999999-11025.wav" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NAudio" Version="1.8.4" />
+    <PackageReference Include="Concentus.OggFile" Version="1.0.4" />
+    <PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.1.0" />
+    <PackageReference Include="coverlet.collector" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,7 +4,7 @@ using System.Reflection;
 using System.IO;
 using NAudio.Wave;
 
-namespace TestEchoPrintSharp
+namespace ConsoleEchoPrintSharp
 {
 	class MainClass
 	{
@@ -13,7 +13,7 @@ namespace TestEchoPrintSharp
 			if (args.Length == 0)
 			{
 				var assembly = Assembly.GetExecutingAssembly();
-				var resourceName = "TestEchoPrintSharp.Resources.NIN-999999-11025.wav";
+				var resourceName = "ConsoleEchoPrintSharp.Resources.NIN-999999-11025.wav";
 
 				using (Stream stream = assembly.GetManifestResourceStream(resourceName))
 				using (BinaryReader reader = new BinaryReader(stream, System.Text.Encoding.ASCII))
@@ -56,8 +56,8 @@ namespace TestEchoPrintSharp
 					Console.WriteLine("");
 					Console.WriteLine("The above is the EchoPrint code for the song '999,999' by Nine Inch Nails.");
 					Console.WriteLine("To generate codes for your own mp3s or wavs add them as parameters to ");
-					Console.WriteLine("TestEchoPrintSharp.exe in a command line or in the debug settings");
-					Console.WriteLine("or execution setting of the TestEchoPrintSharp project.");
+					Console.WriteLine("ConsoleEchoPrintSharp.exe in a command line or in the debug settings");
+					Console.WriteLine("or execution setting of the ConsoleEchoPrintSharp project.");
 					Console.WriteLine("(mp3s only work on Windows, because NAudio depends on Msacm32.dll.)");
 				}
 			} 
