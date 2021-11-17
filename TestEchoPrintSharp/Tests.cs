@@ -135,7 +135,7 @@ namespace TestEchoPrintSharp
         /// compares the wavs pcm data with the output of the opus codec
         /// </summary>
         [Test]
-        public void WavOpusgSimilarity()
+        public void WavOpusSimilarity()
         {
             string opusFingerprint;
             string pcmFingerprint;
