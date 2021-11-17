@@ -135,7 +135,7 @@ namespace TestEchoPrintSharp
         /// compares the wavs pcm data with the output of the opus codec
         /// </summary>
         [Test]
-        public void WavOggSimilarity()
+        public void WavOpusgSimilarity()
         {
             string opusFingerprint;
             string pcmFingerprint;
@@ -160,7 +160,7 @@ namespace TestEchoPrintSharp
             int similarity = ComputeLevenshteinDistance(unzippedOpusFingerprint, unzippedPcmFingerprint);
             float averageDifferencePerCharacter = (float)similarity / (unzippedOpusFingerprint.Length + unzippedPcmFingerprint.Length / 2);
             Assert.Less(averageDifferencePerCharacter, 0.4);
-            Assert.Less(averageDifferencePerCharacter, 0.001);
+            Assert.Greater(averageDifferencePerCharacter, 0.001);
         }
 
         private static int ComputeLevenshteinDistance(string s, string t)
